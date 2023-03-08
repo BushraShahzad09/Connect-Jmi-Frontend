@@ -1,0 +1,8 @@
+.comments p{
+    /* float: left; */
+    display: flex;
+    align-items: flex-start;
+}
+.comment{
+    padding: 20px;
+}
