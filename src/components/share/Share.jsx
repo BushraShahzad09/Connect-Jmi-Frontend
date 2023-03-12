@@ -1,37 +1,39 @@
 import "./share.css";
-import { useContext, useState} from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
-import {useMutation,  useQueryClient} from 'react-query'
+import { useMutation, useQueryClient } from "react-query";
 import { makeRequest } from "../../axios";
 import axios from "axios";
 
 const Share = () => {
-
-  const [desc, setDesc]=useState("")
+  const [desc, setDesc] = useState("");
   // const currentUser={
   //   profilePic: "acb",
   //   name: "arsa"
   // }
-  const {currentUser} = useContext(AuthContext)
+  const { currentUser } = useContext(AuthContext);
 
-  const queryClient=useQueryClient()
+  const queryClient = useQueryClient();
 
-  const mutation=useMutation((newPost)=>{
-    return makeRequest.post("/posts", newPost)
-  }, {
-    onSuccess: ()=>{
-      queryClient.invalidateQueries(['posts'])
+  const mutation = useMutation(
+    (newPost) => {
+      return makeRequest.post("/posts", newPost);
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["posts"]);
+      },
     }
-  })
+  );
 
-  const handleClick=e=>{
-    e.preventDefault()
-    if( desc==="") alert("Input field cannot be empty")
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (desc === "") alert("Input field cannot be empty");
     else {
-      mutation.mutate({desc})
-      setDesc("")
+      mutation.mutate({ desc });
+      setDesc("");
     }
-  }
+  };
 
   // const handleClick=async e=>{
   //   e.preventDefault()
@@ -47,16 +49,20 @@ const Share = () => {
     <div className="share">
       <div className="container3">
         <div className="top">
-          <img
-            src={currentUser.profilePic}
-            alt=""
+          <img src={currentUser.profilePic} alt="" />
+          <input
+            type="text"
+            placeholder={`What's on your mind ${currentUser.name}?`}
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
           />
-          <input type="text" placeholder={`What's on your mind ${currentUser.name}?`} value={desc} onChange={e=>setDesc(e.target.value)}/>
         </div>
         <hr />
         <div className="bottom">
           <div className="right">
-            <button onClick={handleClick}>Share</button>
+            <button id="share-btn" onClick={handleClick}>
+              Share
+            </button>
           </div>
         </div>
       </div>
