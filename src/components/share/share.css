@@ -20,7 +20,7 @@ input {
   width: 60%;
 }
 
-::placeholder {
+.shareinput::placeholder {
   color: #f8fae4;
 }
 
@@ -38,3 +38,11 @@ button {
 #share-btn:hover {
   background-color: #d0dd97;
 }
+
+.shareinput{
+  width: 100%;
+  color: white;
+  /* background-color: black; */
+}
+
+

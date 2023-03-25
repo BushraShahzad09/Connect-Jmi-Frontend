@@ -10,6 +10,7 @@ import {useMutation,  useQueryClient} from 'react-query'
 const Comments = ({postId}) =>{
   const [desc, setDesc]=useState("")
   const { currentUser } = useContext(AuthContext);
+  let userid=currentUser.id;
 
   const queryClient=useQueryClient()
 
@@ -31,15 +32,15 @@ const Comments = ({postId}) =>{
   const handleClick=e=>{
     e.preventDefault()
     console.log(desc, postId)
-    mutation.mutate({desc, postId})
+    mutation.mutate({desc, userid, postId})
     setDesc("")
   }
 
   return (
     <div className="comments">
-      {currentUser.isverified===1  && <div className="write">
-        <input type="text" placeholder="write a comment" onChange={e=>setDesc(e.target.value)} value={desc} />
-        <button onClick={handleClick}>Send</button>
+      {currentUser.is===1 && <div className="write">
+        <input className="commentinput" type="text" placeholder="write a comment" onChange={e=>setDesc(e.target.value)} value={desc} />
+        <button className="commentbutton" onClick={handleClick}>Send</button>
       </div> }
       
       {isLoading ?  "Loading" : data.map((comment) => (

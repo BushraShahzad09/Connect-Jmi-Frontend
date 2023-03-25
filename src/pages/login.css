@@ -104,3 +104,7 @@
   .logincontent{
     margin: -50vh;
   }
+
+ .form>input{
+  color: black;
+ }

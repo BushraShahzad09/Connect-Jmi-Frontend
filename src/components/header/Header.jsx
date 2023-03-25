@@ -1,8 +1,25 @@
 import React from "react";
 //import blob from "../images/blob.svg";
 import "./Header.css";
+import { Navigate } from "react-router-dom";
+import { Link, useNavigate} from 'react-router-dom'
+
 const Header = () => {
-  return <div className="redbox">Connect Jamia</div>;
+  const navigate=useNavigate()
+
+  const handleLogout=()=>{
+    localStorage.removeItem("user")
+    navigate("/login");
+  }
+
+  return (
+  <>
+  <div className="redbox">
+  Connect Jamia
+  <button className="logout" onClick={handleLogout}>Logout</button>
+  </div>;
+  </>
+  )
 };
 
 export default Header;

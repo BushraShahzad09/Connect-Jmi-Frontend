@@ -17,3 +17,18 @@
 * {
   /* border: 1px solid red; */
 }
+
+.item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.commentActive{
+  border: 2px solid gray;
+}
+
+*{
+  /* border: solid black 1px; */
+}

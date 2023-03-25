@@ -10,6 +10,9 @@ const Post = ({ post }) => {
 
   const [commentOpen, setCommentOpen] = useState(false);
 
+  const handleComment = () => {
+    setCommentOpen(!commentOpen);
+  }
 
   return (
     <div className="post">
@@ -22,10 +25,10 @@ const Post = ({ post }) => {
           <p>{post.desc}</p>
         </div>
         <div className="info">
-          <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
-            <TextsmsOutlinedIcon />
+          <button className={commentOpen ? "item commentActive" : "item"} onClick={handleComment}>
+            <TextsmsOutlinedIcon style={{marginRight: 5}}/>
             Comments
-          </div>
+          </button>
         </div>
         {commentOpen && <Comments postId={post.id} />}
       </div>

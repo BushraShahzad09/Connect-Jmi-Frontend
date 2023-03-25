@@ -12,7 +12,8 @@ const Share = () => {
   //   name: "arsa"
   // }
   const { currentUser } = useContext(AuthContext);
-
+  let userid=currentUser.id;
+  
   const queryClient = useQueryClient();
 
   const mutation = useMutation(
@@ -30,7 +31,7 @@ const Share = () => {
     e.preventDefault();
     if (desc === "") alert("Input field cannot be empty");
     else {
-      mutation.mutate({ desc });
+      mutation.mutate({ desc, userid });
       setDesc("");
     }
   };
@@ -49,8 +50,9 @@ const Share = () => {
     <div className="share">
       <div className="container3">
         <div className="top">
-          <img src={currentUser.profilePic} alt="" />
+
           <input
+          className="shareinput"
             type="text"
             placeholder={`What's on your mind ${currentUser.name}?`}
             value={desc}

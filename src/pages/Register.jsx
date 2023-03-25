@@ -6,11 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import { AuthContext } from "../../src/context/authContext";
 
-const Login = () => {
+const Register = () => {
 
     const [inputs, setInputs]=useState({
         username:"",
         password:"",
+        email: "abc@gmail.com",
+        name: "arsa"
       })
 
       const handleChange=(e)=>{  
@@ -21,12 +23,12 @@ const Login = () => {
     
       const navigate=useNavigate()
     
-      const { login } = useContext(AuthContext);
+      const { register } = useContext(AuthContext);
     
       const handleLogin = async (e) => {
         e.preventDefault()
         try {
-          await login(inputs);
+          await register(inputs);
           navigate("/")
         } catch (err) {
           setErr(err.response.data)
@@ -46,10 +48,12 @@ const Login = () => {
 
             <div class="container">
                 <form action="" class="form">
-                    <h2>Sign In</h2>
+                    <h2>Register</h2>
                     <input name="username" class="box" placeholder="Enter Username"  onChange={handleChange} />
                     <input type="password" name="password" class="box" placeholder="Enter Password" onChange={handleChange} />
-                    <input type="submit" value="Log in" id="submit" onClick={handleLogin}/>
+                    <input type="text" name="email" class="box" placeholder="Enter Email" onChange={handleChange} />
+                    <input type="text" name="name" class="box" placeholder="Enter Name" onChange={handleChange} />
+                    <input type="submit" value="Register" id="submit" onClick={handleLogin}/>
                 </form>
                 <div class="side">
                     <img src={network} alt="illustration" />
@@ -60,4 +64,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Register
