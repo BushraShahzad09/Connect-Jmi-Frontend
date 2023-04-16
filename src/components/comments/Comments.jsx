@@ -38,7 +38,7 @@ const Comments = ({postId}) =>{
 
   return (
     <div className="comments">
-      {currentUser.is===1 && <div className="write">
+      {currentUser.isverified===1 && <div className="write">
         <input className="commentinput" type="text" placeholder="write a comment" onChange={e=>setDesc(e.target.value)} value={desc} />
         <button className="commentbutton" onClick={handleClick}>Send</button>
       </div> }

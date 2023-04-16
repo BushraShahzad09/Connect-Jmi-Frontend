@@ -108,3 +108,8 @@
  .form>input{
   color: black;
  }
+
+ .Logindiv{
+  box-sizing: border-box;
+  /* overflow: hidden; */
+ }

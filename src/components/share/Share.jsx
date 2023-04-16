@@ -1,4 +1,5 @@
 import "./share.css";
+// import "./share.scss";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useMutation, useQueryClient } from "react-query";
@@ -69,6 +70,7 @@ const Share = () => {
         </div>
       </div>
     </div>
+  
   );
 };
 
