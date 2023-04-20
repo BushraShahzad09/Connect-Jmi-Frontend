@@ -1,4 +1,4 @@
-rimport React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import './otp.css'
 import network from '../images/network.jpg'
 import blob from '../images/blob.svg'
