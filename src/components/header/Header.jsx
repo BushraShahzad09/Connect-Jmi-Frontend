@@ -3,6 +3,7 @@ import React from "react";
 import "./Header.css";
 import { Navigate } from "react-router-dom";
 import { Link, useNavigate} from 'react-router-dom'
+import logo from "../images/logo.png"
 
 const Header = () => {
   const navigate=useNavigate()
@@ -15,7 +16,7 @@ const Header = () => {
   return (
   <>
   <div className="redbox">
-  Connect Jamia
+  <img src={logo} width="200px"/>
   <button className="logout" onClick={handleLogout}>Logout</button>
   </div>;
   </>
