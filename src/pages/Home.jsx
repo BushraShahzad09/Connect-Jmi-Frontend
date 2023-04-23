@@ -5,7 +5,7 @@ import Share from '../components/share/Share'
 
 const Home = () => {
   return (
-    <div>   
+    <div className="homeContainer">   
         <Header />
         <Share />
         <Posts />
