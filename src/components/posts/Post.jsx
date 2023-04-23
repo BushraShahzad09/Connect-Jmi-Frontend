@@ -25,7 +25,7 @@ const Post = ({ post }) => {
           <p>{post.desc}</p>
         </div>
         <div className="info">
-          <button className={commentOpen ? "item commentActive" : "item"} onClick={handleComment}>
+          <button id="comments" className={commentOpen ? "item commentActive" : "item"} onClick={handleComment}>
             <TextsmsOutlinedIcon style={{marginRight: 5}}/>
             Comments
           </button>

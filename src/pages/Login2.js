@@ -1,9 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react'
 import './login2.css'
+import "../../src/components/header/Header.css"
 import network from '../images/network.jpg'
 import blob from '../images/blob.svg'
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../src/context/authContext";
+import logo from "../images/logo_wo (2).png";
+
 
 
 const Login2 = () => {
@@ -11,34 +14,27 @@ const Login2 = () => {
     const [inputs, setInputs] = useState({
         username: "",
         password: "",
-      })
-    
-      const handleChange = (e) => {
-        setInputs(prev => ({ ...prev, [e.target.name]: e.target.value }))
-      }
+    })
 
-      const resetChange = (e) => {
-        setInputs({
-            username: "",
-            password: "",
-          });
-      }
-    
-      const [err, setErr] = useState(null);
-    
-      const navigate = useNavigate()
-    
-      const { login, register } = useContext(AuthContext);
-    
-      const handleLogin = async (e) => {
+    const handleChange = (e) => {
+        setInputs(prev => ({ ...prev, [e.target.name]: e.target.value }))
+    }
+
+    const [err, setErr] = useState(null);
+
+    const navigate = useNavigate()
+
+    const { login, register } = useContext(AuthContext);
+
+    const handleLogin = async (e) => {
         e.preventDefault()
         try {
-          await login(inputs);
-          navigate("/")
+            await login(inputs);
+            navigate("/")
         } catch (err) {
-          setErr(err.response.data)
+            setErr(err.response.data)
         }
-      };
+    };
 
       const handleRegister = async(e) => {
         e.preventDefault() //cannot register twice with same details
@@ -49,7 +45,13 @@ const Login2 = () => {
             setErr(err.response.data);
         }
       }
-
+      const resetChange = (e) => {
+        setInputs({
+            username: "",
+            password: "",
+          });
+      }
+      
     const toggleForm = () => {
         const container = document.querySelector('.container');
         container.classList.toggle('active');
@@ -63,53 +65,63 @@ const Login2 = () => {
     console.log(inputs)
 
     return (
-        <div>
-            <section>
-                {/* s<img src={blob} alt="header" /> */}
-                {/* <div className='logincontent'>
-                    <h1 className="heading">CONNECT JAMIA</h1>
-                    <h2 className="tagline">Bridging alumni with students</h2>
+        <>
+            <div className="navbar">
+                <div className="navbar-left">
+                    <img className="logo_image" src={logo} width="80px" alt="Logo" />
+                    <h1 className="nav-heading">CONNECT JAMIA</h1>
+                </div>
+                <div className="navbar-right">
+                </div>
+            </div>
+            <div>
+                <section>
+                    {/* s<img src={blob} alt="header" /> */}
+                    {/* <div className='logincontent'>
+                    <h1 class="heading">CONNECT JAMIA</h1>
+                    <h2 class="tagline">Bridging alumni with students</h2>
                     <p className='loginp'>
                         Ever wondered where the graduates of our university end up? Wanted to ask
                         them for advice? Well, sign in and let us begin.
                     </p>
                 </div> */}
-                <div className="container">
-                    <div className="user signinBx">
-                        <div className="imgBx"><img style={{ objectFit: 'cover' }} src={network} alt="illustration" /></div>
-                        <div className="formBx">
-                            <form action="" onsubmit="return false;">
-                                <h2>Sign In</h2>
-                                <input type="text" name="username" placeholder="Username" onChange={handleChange} />
-                                <input type="password" name="password" placeholder="Password" onChange={handleChange} />
-                                <input type="submit" name="" value="Login" onClick={handleLogin} />
-                                <p className="signup">
-                                    Don't have an account ?
-                                    <a href="#" onClick={toggleForm}>Sign Up.</a>
-                                </p>
-                            </form>
+                    <div class="container">
+                        <div class="user signinBx">
+                            <div class="imgBx"><img style={{ objectFit: 'cover' }} src={network} alt="illustration" /></div>
+                            <div class="formBx">
+                                <form action="" onsubmit="return false;">
+                                    <h2>Sign In</h2>
+                                    <input type="text" name="username" placeholder="Username" onChange={handleChange} />
+                                    <input type="password" name="password" placeholder="Password" onChange={handleChange} />
+                                    <input type="submit" name="" value="Login" onClick={handleLogin} />
+                                    <p class="signup">
+                                        Don't have an account ?
+                                        <a href="#" onClick={toggleForm}>Sign Up.</a>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="user signupBx">
+                            <div class="formBx">
+                                <form action="" onsubmit="return false;">
+                                    <h2>Create an account</h2>
+                                    <input type="text" name="" placeholder="Username" />
+                                    <input type="email" name="" placeholder="Email Address" />
+                                    <input type="password" name="" placeholder="Create Password" />
+                                    <input type="password" name="" placeholder="Confirm Password" />
+                                    <input type="submit" name="" value="Sign Up" />
+                                    <p class="signup">
+                                        Already have an account ?
+                                        <a href="#" onClick={toggleForm}>Sign in.</a>
+                                    </p>
+                                </form>
+                            </div>
+                            <div class="imgBx"><img src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img2.jpg" alt="" /></div>
                         </div>
                     </div>
-                    <div className="user signupBx">
-                        <div className="formBx">
-                            <form action="" onsubmit="return false;">
-                                <h2>Create an account</h2>
-                                <input type="text" name="name" placeholder="Name" onChange={handleChange}/>
-                                <input type="text" name="username" placeholder="Username" onChange={handleChange}/>
-                                <input type="email" name="email" placeholder="Email Address" onChange={handleChange}/>
-                                <input type="password" name="password" placeholder="Create Password" onChange={handleChange}/>
-                                <input type="submit" name="" value="Sign Up" onClick={handleRegister}/>
-                                <p className="signup">
-                                    Already have an account ?
-                                    <a href="#" onClick={toggleForm}>Sign in.</a>
-                                </p>
-                            </form>
-                        </div>
-                        <div className="imgBx"><img src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img2.jpg" alt="" /></div>
-                    </div>
-                </div>
-            </section>
-        </div>
+                </section>
+            </div>
+        </>
     )
 }
 
