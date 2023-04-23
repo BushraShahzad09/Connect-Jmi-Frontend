@@ -1,9 +1,12 @@
-* {
+/* * { */
   /* border: 1px black solid; */
+/* } */
+.homeContainer{
+  background-color: #FAF9F7;
+  margin: 0;
 }
-
 body {
-  font-size: 20px;
+  /* font-size: 20px; */
   margin: auto;
   align-items: center;
   justify-content: center;
