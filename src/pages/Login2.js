@@ -36,9 +36,20 @@ const Login2 = () => {
         }
     };
 
+      const handleRegister = async(e) => {
+        e.preventDefault() //cannot register twice with same details
+        try {
+            await register(inputs);
+            navigate("/");
+        } catch (err) {
+            setErr(err.response.data);
+        }
+      }
+
     const toggleForm = () => {
         const container = document.querySelector('.container');
         container.classList.toggle('active');
+        resetChange();
     };
 
     //   useEffect(()=>{
