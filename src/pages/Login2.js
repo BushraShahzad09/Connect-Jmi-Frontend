@@ -24,7 +24,7 @@ const Login2 = () => {
 
     const navigate = useNavigate()
 
-    const { login } = useContext(AuthContext);
+    const { login, register } = useContext(AuthContext);
 
     const handleLogin = async (e) => {
         e.preventDefault()
@@ -45,7 +45,13 @@ const Login2 = () => {
             setErr(err.response.data);
         }
       }
-
+      const resetChange = (e) => {
+        setInputs({
+            username: "",
+            password: "",
+          });
+      }
+      
     const toggleForm = () => {
         const container = document.querySelector('.container');
         container.classList.toggle('active');
