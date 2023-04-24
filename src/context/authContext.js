@@ -24,7 +24,7 @@ export const AuthContextProvider = ({ children }) => {
       withCredentials: true,
     })
     setCurrentUser(res.data);
-    console.log(res.data);
+    console.log(` ${inputs} final data ${res.data}`);
   };
 
   useEffect(() => {
