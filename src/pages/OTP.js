@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import './OTP.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from "../../src/context/authContext";
 
 const Otp = () => {
@@ -10,6 +10,8 @@ const Otp = () => {
     const [minute, setMinute] = useState(4);
 
     var timer = minute+seconds;
+
+    const location = useLocation();
 
     useEffect(() => {
       let timer = setInterval(() => {
@@ -55,20 +57,46 @@ const Otp = () => {
 
       const navigate = useNavigate()
 
-      const { login } = useContext(AuthContext);
+      const { otpVerification, resendOTP } = useContext(AuthContext);
 
-      const handleLogin = async (e) => {
+      const handleOtp = async (e) => {
         e.preventDefault()
         try {
-          await login(inputs);
+          var data = {
+            username: location.state.username,
+            otp: inputs,
+          } 
+          await otpVerification(data);
           navigate("/")
         } catch (err) {
           setErr(err.response.data)
+          // console.log(err.response.data);
         }
       };
 
+      const sendOtp = async (e) => {
+        e.preventDefault()
+        try {
+          var data = {
+            username: location.state.username,
+          } 
+          setMinute(4);
+          setSeconds(59);
+          document.getElementById("resend-info").className = 'activated';
+          await resendOTP(data);
+          // navigate("/otp",{state: data})
+        } catch (err) {
+          setErr(err.response.data)
+          // console.log(err.response.data);
+        }
+      };
+
+      if(timer === 0){
+        document.getElementById("resend-info").className = 'deactivated';
+      } 
+
     // console.log(inputs);
-    console.log(timer);
+    // console.log(timer);
 
 
     return (
@@ -80,6 +108,7 @@ const Otp = () => {
 
                             <form method="get" class="digit-group"  maxLength="1" data-group-name="digits" data-autosubmit="true" autocomplete="off">
                             <h2>Enter Otp</h2>
+                            <p className={err===null?'show-error deactivated' : 'show-error activated'}>Invalid OTP</p>
                                 <input type="text" id="digit-1" maxLength="1" name="digit-1"  onKeyUp={handleonChange} data-next="digit-2" />
                                 <input type="text" id="digit-2"  maxLength="1" name="digit-2"  onKeyUp={handleonChange} data-next="digit-3" data-previous="digit-1" />
                                 <input type="text" id="digit-3"  maxLength="1" name="digit-3" onKeyUp={handleonChange} data-next="digit-4" data-previous="digit-2" />
@@ -89,9 +118,10 @@ const Otp = () => {
                                 <input type="text" id="digit-6"  maxLength="1" name="digit-6" onKeyUp={handleonChange} data-previous="digit-5" />
                                 <p>Time remaining: {minute<10? "0"+minute : minute}:{seconds<10? "0"+seconds : seconds}</p>
                                 <div className='otpSubmitButton'>
-                                <input type="submit" className = "submitbtn" name="" value="Submit" />
-                                <input type="submit" name="" value="Re-Send OTP" className={timer>0? "deactivated" : "activated"} />
+                                <input type="submit" className = "submitbtn" name="" value="Submit" onClick={handleOtp}/>
+                                <input type="submit" name="" value="Re-Send OTP" className={timer>0? "deactivated" : "activated"} onClick={sendOtp} />
                                 </div>
+                                <p id='resend-info' className='deactivated'> OTP has been sent. Please check your email.</p>
                             </form>
                           </div>
                         <div class="imgBx"><img src="https://img.freepik.com/free-vector/new-message-concept-illustration_114360-666.jpg?w=1000&t=st=1682011633~exp=1682012233~hmac=334f29c7f7a0a926d9604196f2d41b68dfb01b59cc43bd47718e33313adaae6d" alt="" /></div>

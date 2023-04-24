@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import './login2.css'
 import network from '../images/network.jpg'
-import blob from '../images/blob.svg'
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../src/context/authContext";
 
@@ -9,10 +8,12 @@ import { AuthContext } from "../../src/context/authContext";
 const Login2 = () => {
 
     const [inputs, setInputs] = useState({
-        username: "",
-        password: "",
+        username: "arsa",
+        password: "1234",
       })
-    
+
+      const [err, setErr] = useState(null);
+
       const handleChange = (e) => {
         setInputs(prev => ({ ...prev, [e.target.name]: e.target.value }))
       }
@@ -22,9 +23,8 @@ const Login2 = () => {
             username: "",
             password: "",
           });
+        setErr(null);
       }
-    
-      const [err, setErr] = useState(null);
     
       const navigate = useNavigate()
     
@@ -37,6 +37,7 @@ const Login2 = () => {
           navigate("/")
         } catch (err) {
           setErr(err.response.data)
+          console.log(err);
         }
       };
 
@@ -44,9 +45,10 @@ const Login2 = () => {
         e.preventDefault() //cannot register twice with same details
         try {
             await register(inputs);
-            navigate("/otp");
+            navigate("/otp",{state:inputs});
         } catch (err) {
             setErr(err.response.data);
+            console.log(err.response.data);
         }
       }
 
@@ -80,6 +82,7 @@ const Login2 = () => {
                         <div className="formBx">
                             <form action="" onsubmit="return false;">
                                 <h2>Sign In</h2>
+                                <p className={err===null?'show-error deactivated' : 'show-error activated'}>Username or password invalid</p>
                                 <input type="text" name="username" placeholder="Username" onChange={handleChange} />
                                 <input type="password" name="password" placeholder="Password" onChange={handleChange} />
                                 <input type="submit" name="" value="Login" onClick={handleLogin} />
@@ -94,6 +97,7 @@ const Login2 = () => {
                         <div className="formBx">
                             <form action="" onsubmit="return false;">
                                 <h2>Create an account</h2>
+                                <p className={err===null?'show-error deactivated' : 'show-error activated'}>{err}</p>
                                 <input type="text" name="name" placeholder="Name" onChange={handleChange}/>
                                 <input type="text" name="username" placeholder="Username" onChange={handleChange}/>
                                 <input type="email" name="email" placeholder="Email Address" onChange={handleChange}/>
