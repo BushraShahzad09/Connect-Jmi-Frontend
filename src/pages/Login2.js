@@ -44,7 +44,7 @@ const Login2 = () => {
         e.preventDefault() //cannot register twice with same details
         try {
             await register(inputs);
-            navigate("/");
+            navigate("/otp");
         } catch (err) {
             setErr(err.response.data);
         }

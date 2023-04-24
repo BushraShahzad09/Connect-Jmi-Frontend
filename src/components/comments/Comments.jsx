@@ -32,6 +32,7 @@ const Comments = ({postId}) =>{
   const handleClick=e=>{
     e.preventDefault()
     console.log(desc, postId)
+    
     mutation.mutate({desc, userid, postId})
     setDesc("")
   }
@@ -39,7 +40,7 @@ const Comments = ({postId}) =>{
   return (
     <div className="comments">
       {currentUser.isverified===1 && <div className="write">
-        <input className="commentinput" type="text" placeholder="write a comment" onChange={e=>setDesc(e.target.value)} value={desc} />
+        <input className="commentinput" type="text" placeholder="Write a comment!" onChange={e=>setDesc(e.target.value)} value={desc} />
         <button className="commentbutton" onClick={handleClick}>Send</button>
       </div> }
       
@@ -47,7 +48,7 @@ const Comments = ({postId}) =>{
         <div className="comment">
           <div className="details">
             <span>{comment.name}</span>
-            <span className="date">{moment(comment.createdat).fromNow()}</span>
+            <span className="date-comment">{moment(comment.createdat).fromNow()}</span>
           </div>
             <p>{comment.desc}</p>
         </div>

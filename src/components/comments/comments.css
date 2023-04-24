@@ -13,16 +13,18 @@
 }
 
 .commentinput {
-  border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 10px;
+  background-color: lightblue;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
   margin-top: 10px;
-  height: 30px;
+  margin-bottom: 10px;
+  height: 25px;
   /* margin: none; */
   width: 80%;
   box-sizing: border-box;
-  background-color: wheat;
+  font-size: 20px;
   /* color: rgb(147, 114, 73); */
-  color: black;
+  color: white;
 }
 
 * {
@@ -31,10 +33,25 @@
 
 .commentbutton {
   float: right;
+  margin-top: 10px;
+  
   /* top: 50%;
   left: 50%;
   margin-top: -100px;
   margin-left: -100px; */
   align-items: center;
   justify-content: center;
+  background-color: lightblue;
+  border: hidden;
+  padding: 10px;
+  border-radius: 10px;
+  transition: all 20ms ease-in-out;
+}
+.commentbutton:hover{
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.date-comment{
+  margin-top: 20px;
+  font-size: 10px;
+  margin-left: -30px;
 }
