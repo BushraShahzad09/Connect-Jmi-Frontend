@@ -28,7 +28,7 @@ const Otp = () => {
     });
 
     const handleonChange= (event)=>{
-      //  console.log();
+        // console.log();
         var elmnt = event.target;
         var next = elmnt.getAttribute("data-next");
         var prev = elmnt.getAttribute("data-previous");
@@ -102,4 +102,4 @@ const Otp = () => {
     )
 }
 
-export default Otp
+export default Otp;
