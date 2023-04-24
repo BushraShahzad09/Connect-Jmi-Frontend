@@ -1,6 +1,7 @@
 .posts {
   margin: 0 auto;
 }
+
 .post {
   margin: 20px auto;
   padding: 20px;
@@ -13,12 +14,35 @@
 
 .details {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
 }
+
+.timestamp {
+  display: flex;
+  flex-direction: row;
+  margin-top: -20px;
+  margin-left: 50px;
+  font-size: 10px;
+}
+
+.avatar {
+  background-color: lightblue;
+}
+
+.name {
+  margin-left: 10px;
+  margin-right: 10px;
+
+
+}
+
+
+
 * {
   /* border: 1px solid red; */
 }
-#comments{
+
+#comments {
   background-color: lightblue;
   border: hidden;
   padding: 10px;
@@ -26,20 +50,22 @@
   transition: all 20ms ease-in-out;
 }
 
-#comments:hover{
+#comments:hover {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
-.item{
+
+.item {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
 
-.commentActive{
+.commentActive {
   border: 2px solid gray;
+  
 }
 
-*{
+* {
   /* border: solid black 1px; */
 }
