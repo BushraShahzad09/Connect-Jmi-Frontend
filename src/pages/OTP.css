@@ -8,7 +8,7 @@
 }
 
  section .container .user .formBx .digit-group input[type ='text'] {
-    width: 40px;
+    max-width: 40px;
     height: 50px;
     /* background-color: lighten($BaseBG, 5%); */
     border: none;
@@ -21,14 +21,15 @@
     margin: 0 2px;
 }
 section .container .user .formBx form input[type='submit'] {
-    max-width: 100px;
-    background: #677eff;
+    min-width: 120px;
+    background: #5469e0;
     color: #fff;
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 1px;
     transition: 0.5s;
+    border-radius: 5px;
   }
 section .container .user .formBx .digit-group .splitter {
 		padding: 0 5px;
@@ -144,3 +145,28 @@ section .container .otpBx .imgBx {
   }
 
 }
+
+.otpSubmitButton {
+    display: flex;
+    justify-content: space-around;
+    margin: 1.5em 0;
+}
+
+.deactivated {
+  display: none;
+}
+.activated {
+  display: block;
+}
+
+@media (max-width: 450px) {
+    .otpSubmitButton {
+      display: flex ;
+      flex-direction: column;
+      align-items: center;
+    }
+}    
+
+/* * {
+  border: 1px solid red;
+} */
