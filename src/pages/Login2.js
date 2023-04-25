@@ -3,13 +3,14 @@ import './login2.css'
 import network from '../images/network.jpg'
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../src/context/authContext";
+import { Alert } from '@mui/material';
 
 
 const Login2 = () => {
 
     const [inputs, setInputs] = useState({
-        username: "arsa",
-        password: "1234",
+        username: "",
+        password: "",
       })
 
       const [err, setErr] = useState(null);
@@ -32,9 +33,13 @@ const Login2 = () => {
     
       const handleLogin = async (e) => {
         e.preventDefault()
+        if(inputs.username==='' || inputs.password===''){
+           alert("Input field cannot be empty");
+            return
+        }
         try {
           await login(inputs);
-          navigate("/")
+          navigate("/home")
         } catch (err) {
           setErr(err.response.data)
           console.log(err);
@@ -43,6 +48,11 @@ const Login2 = () => {
 
       const handleRegister = async(e) => {
         e.preventDefault() //cannot register twice with same details
+        if(inputs.username==='' || inputs.password===''){
+            // alert("Input fields cannot be empty");
+            setErr("Input fields cannot be empty")
+             return
+         }
         try {
             await register(inputs);
             navigate("/otp",{state:inputs});
@@ -81,6 +91,7 @@ const Login2 = () => {
                         <div className="imgBx"><img style={{ objectFit: 'cover' }} src={network} alt="illustration" /></div>
                         <div className="formBx">
                             <form action="" onsubmit="return false;">
+                                <h1>CONNECT JAMIA</h1>
                                 <h2>Sign In</h2>
                                 <p className={err===null?'show-error deactivated' : 'show-error activated'}>Username or password invalid</p>
                                 <input type="text" name="username" placeholder="Username" onChange={handleChange} />
@@ -96,6 +107,7 @@ const Login2 = () => {
                     <div className="user signupBx">
                         <div className="formBx">
                             <form action="" onsubmit="return false;">
+                                <h1>CONNECT JAMIA</h1>
                                 <h2>Create an account</h2>
                                 <p className={err===null?'show-error deactivated' : 'show-error activated'}>{err}</p>
                                 <input type="text" name="name" placeholder="Name" onChange={handleChange}/>

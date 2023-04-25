@@ -75,6 +75,17 @@ section .container .user .formBx form h2 {
   color: #555;
 }
 
+section .container .user .formBx form h1 {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 10px;
+  color: #555;
+}
+
 section .container .user .formBx form input {
   position: relative;
   width: 100%;

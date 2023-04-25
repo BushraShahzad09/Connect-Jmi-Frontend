@@ -13,8 +13,8 @@ const Share = () => {
   //   name: "arsa"
   // }
   const { currentUser } = useContext(AuthContext);
-  let userid=currentUser.id;
-  
+  let userid = currentUser.id;
+
   const queryClient = useQueryClient();
 
   const mutation = useMutation(
@@ -47,30 +47,42 @@ const Share = () => {
   //   }
   // }
 
+  const handleEnter = (event) => {
+    if (event.keyCode === 13) {
+      if (desc === "") {
+        alert("Input field cannot be empty");
+        return
+      }
+      mutation.mutate({ desc, userid });
+      setDesc("");
+    }
+  }
+
   return (
     <div className="share">
       <div className="container3">
         <div className="top">
 
           <input
-          className="shareinput"
+            className="shareinput"
             type="text"
             placeholder={`What's on your mind ${currentUser.name}?`}
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
+            onKeyDown={(e) => handleEnter(e)}
           />
         </div>
         <hr />
         <div className="bottom">
           <div className="right">
-            <button className="share-btn" onClick={handleClick}>
+            <button className="share-btn" onClick={handleClick} >
               Share
             </button>
           </div>
         </div>
       </div>
     </div>
-  
+
   );
 };
 

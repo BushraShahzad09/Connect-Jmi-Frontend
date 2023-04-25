@@ -24,7 +24,7 @@ const Otp = () => {
           setSeconds(59);
         }
 
-      }, 100);
+      }, 1000);
 
       return () => clearInterval(timer);
     });
@@ -59,6 +59,7 @@ const Otp = () => {
 
       const { otpVerification, resendOTP } = useContext(AuthContext);
 
+      console.log(location.state.username)
       const handleOtp = async (e) => {
         e.preventDefault()
         try {
@@ -67,7 +68,7 @@ const Otp = () => {
             otp: inputs,
           } 
           await otpVerification(data);
-          navigate("/")
+          navigate("/home")
         } catch (err) {
           setErr(err.response.data)
           // console.log(err.response.data);
@@ -94,10 +95,6 @@ const Otp = () => {
       if(timer === 0){
         document.getElementById("resend-info").className = 'deactivated';
       } 
-
-    // console.log(inputs);
-    // console.log(timer);
-
 
     return (
         <div>
