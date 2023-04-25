@@ -1,11 +1,41 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap');
 
-.login2Container {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
+ section .container .user .formBx .digit-group input[type ='text'] {
+    max-width: 40px;
+    height: 50px;
+    /* background-color: lighten($BaseBG, 5%); */
+    border: none;
+    line-height: 50px;
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+    color: black;
+    margin: 0 2px;
+}
+section .container .user .formBx form input[type='submit'] {
+    min-width: 120px;
+    background: #5469e0;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: 0.5s;
+    border-radius: 5px;
+  }
+section .container .user .formBx .digit-group .splitter {
+		padding: 0 5px;
+		color: black;
+		font-size: 24px;
+	}
 
 section {
   position: relative;
@@ -90,71 +120,15 @@ section .container .user .formBx form input {
   font-weight: 300;
 }
 
-section .container .user .formBx form input[type='submit'] {
-  max-width: 100px;
-  background: #677eff;
-  color: #fff;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  transition: 0.5s;
-}
 
-section .container .user .formBx form .signup {
-  position: relative;
-  margin-top: 20px;
-  font-size: 12px;
-  letter-spacing: 1px;
-  color: #555;
-  text-transform: uppercase;
-  font-weight: 300;
-}
 
-section .container .user .formBx form .signup a {
-  font-weight: 600;
-  text-decoration: none;
-  color: #677eff;
-}
-
-section .container .signupBx {
-  pointer-events: none;
-}
-
-section .container.active .signupBx {
-  pointer-events: initial;
-}
-
-section .container .signupBx .formBx {
-  left: 100%;
-}
-
-section .container.active .signupBx .formBx {
-  left: 0;
-}
-
-section .container .signupBx .imgBx {
-  left: -100%;
-}
-
-section .container.active .signupBx .imgBx {
+section .container .otpBx .formBx {
   left: 0%;
 }
 
-section .container .signinBx .formBx {
+
+section .container .otpBx .imgBx {
   left: 0%;
-}
-
-section .container.active .signinBx .formBx {
-  left: 100%;
-}
-
-section .container .signinBx .imgBx {
-  left: 0%;
-}
-
-section .container.active .signinBx .imgBx {
-  left: -100%;
 }
 
 @media (max-width: 991px) {
@@ -169,9 +143,30 @@ section .container.active .signinBx .imgBx {
   section .container .user .formBx {
     width: 100%;
   }
+
 }
 
-.show-error {
-  color: red;
-  font-size: 12px;
+.otpSubmitButton {
+    display: flex;
+    justify-content: space-around;
+    margin: 1.5em 0;
 }
+
+.deactivated {
+  display: none;
+}
+.activated {
+  display: block;
+}
+
+@media (max-width: 450px) {
+    .otpSubmitButton {
+      display: flex ;
+      flex-direction: column;
+      align-items: center;
+    }
+}    
+
+/* * {
+  border: 1px solid red;
+} */

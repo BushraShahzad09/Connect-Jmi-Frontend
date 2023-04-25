@@ -27,12 +27,26 @@ export const AuthContextProvider = ({ children }) => {
     console.log(` ${inputs} final data ${res.data}`);
   };
 
+  const otpVerification = async (data) => {
+    const res = await axios.post("http://localhost:8800/api/auth/otpVerification",data, {
+      withCredentials:true,
+    })
+    setCurrentUser(res.data);
+  }
+
+  const resendOTP = async (data) => {
+    const res = await axios.post("http://localhost:8800/api/auth/resendOTP",data, {
+      withCredentials:true,
+    })
+    setCurrentUser(res.data);
+  }
+
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(currentUser));
   }, [currentUser]);
 
   return (
-    <AuthContext.Provider value={{ currentUser, login , register}}>
+    <AuthContext.Provider value={{ currentUser, login , register, otpVerification, resendOTP }}>
       {children}
     </AuthContext.Provider>
   );
