@@ -1,0 +1,21 @@
+.child{
+  /* border: 2px solid blue; */
+  float: left;
+  width: 50%;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+.left{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  bottom: 75px
+  
+}
+ .right{
+    padding-right: 200px;
+    width: 80%
+}

@@ -32,9 +32,11 @@ const Comments = ({postId}) =>{
   const handleClick=e=>{
     e.preventDefault()
     console.log(desc, postId)
-    
-    mutation.mutate({desc, userid, postId})
-    setDesc("")
+    if (desc === "") alert("Input field cannot be empty")
+    else{
+      mutation.mutate({desc, userid, postId})
+      setDesc("")
+    }
   }
 
   return (
