@@ -202,7 +202,7 @@ export default function LandingPage() {
         <p>+91 6203218248</p>
       </div>
 
-      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameBorder="0" style={{ border: "0", width: "100%", height: "290px" }} allowFullScreen></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.3122669639183!2d77.27663307589981!3d28.5603843873525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce38ccbae70ef%3A0x88bbd6466e21a864!2sDepartment%20of%20Computer%20Engineering!5e0!3m2!1sen!2sus!4v1682626627564!5m2!1sen!2sus" frameBorder="0" style={{ border: "0", width: "100%", height: "290px" }} allowFullScreen></iframe>
     </div>
 
   </div>
