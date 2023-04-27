@@ -7,7 +7,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
- section .container .user .formBx .digit-group input[type ='text'] {
+ section .containerOTP .user .formBx .digit-group input[type ='text'] {
     max-width: 40px;
     height: 50px;
     /* background-color: lighten($BaseBG, 5%); */
@@ -20,7 +20,7 @@
     color: black;
     margin: 0 2px;
 }
-section .container .user .formBx form input[type='submit'] {
+section .containerOTP .user .formBx form input[type='submit'] {
     min-width: 120px;
     background: #5469e0;
     color: #fff;
@@ -31,13 +31,13 @@ section .container .user .formBx form input[type='submit'] {
     transition: 0.5s;
     border-radius: 5px;
   }
-section .container .user .formBx .digit-group .splitter {
+section .containerOTP .user .formBx .digit-group .splitter {
 		padding: 0 5px;
 		color: black;
 		font-size: 24px;
 	}
 
-section {
+#section {
   position: relative;
   min-height: 100vh;
   /* background-color: #f8dd30; */
@@ -47,7 +47,7 @@ section {
   padding: 20px;
 }
 
-section .container {
+section .containerOTPOTP {
   position: relative;
   width: 800px;
   height: 500px;
@@ -56,7 +56,7 @@ section .container {
   overflow: hidden;
 }
 
-section .container .user {
+section .containerOTP .user {
   position: absolute;
   top: 0;
   left: 0;
@@ -65,7 +65,7 @@ section .container .user {
   display: flex;
 }
 
-section .container .user .imgBx {
+section .containerOTP .user .imgBx {
   position: relative;
   width: 50%;
   height: 100%;
@@ -73,7 +73,7 @@ section .container .user .imgBx {
   transition: 0.5s;
 }
 
-section .container .user .imgBx img {
+section .containerOTP .user .imgBx img {
   position: absolute;
   top: 0;
   left: 0;
@@ -82,7 +82,7 @@ section .container .user .imgBx img {
   object-fit: cover;
 }
 
-section .container .user .formBx {
+section .containerOTP .user .formBx {
   position: relative;
   width: 50%;
   height: 100%;
@@ -94,7 +94,7 @@ section .container .user .formBx {
   transition: 0.5s;
 }
 
-section .container .user .formBx form h2 {
+section .containerOTP .user .formBx form h2 {
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
@@ -105,7 +105,7 @@ section .container .user .formBx form h2 {
   color: #555;
 }
 
-section .container .user .formBx form input {
+section .containerOTP .user .formBx form input {
   position: relative;
   width: 100%;
   padding: 10px;
@@ -122,25 +122,25 @@ section .container .user .formBx form input {
 
 
 
-section .container .otpBx .formBx {
+section .containerOTP .otpBx .formBx {
   left: 0%;
 }
 
 
-section .container .otpBx .imgBx {
+section .containerOTP .otpBx .imgBx {
   left: 0%;
 }
 
 @media (max-width: 991px) {
-  section .container {
+  section .containerOTP {
     max-width: 400px;
   }
 
-  section .container .imgBx {
+  section .containerOTP .imgBx {
     display: none;
   }
 
-  section .container .user .formBx {
+  section .containerOTP .user .formBx {
     width: 100%;
   }
 

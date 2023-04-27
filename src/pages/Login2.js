@@ -65,7 +65,7 @@ const Login2 = () => {
       }
 
     const toggleForm = () => {
-        const container = document.querySelector('.container');
+        const container = document.querySelector('.containerOTP');
         container.classList.toggle('active');
         resetChange();
     };
@@ -88,7 +88,7 @@ const Login2 = () => {
             </div>
             <div>
 
-            <section>
+            <section id="section">
                 {/* s<img src={blob} alt="header" /> */}
                 {/* <div className='logincontent'>
                     <h1 className="heading">CONNECT JAMIA</h1>
@@ -98,7 +98,7 @@ const Login2 = () => {
                         them for advice? Well, sign in and let us begin.
                     </p>
                 </div> */}
-                <div className="container">
+                <div className="containerOTP">
                     <div className="user signinBx">
                         <div className="imgBx"><img style={{ objectFit: 'cover' }} src={network} alt="illustration" /></div>
                         <div className="formBx">
