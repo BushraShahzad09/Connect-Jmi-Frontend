@@ -4,7 +4,9 @@ import network from '../images/network.jpg'
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../src/context/authContext";
 import { Alert } from '@mui/material';
-
+import logo from "../images/logo_wo (2).png";
+import "../components/header/Header.css";
+import register_img from "../images/resigter.jpg";
 
 const Login2 = () => {
 
@@ -75,7 +77,17 @@ const Login2 = () => {
     console.log(inputs)
 
     return (
-        <div>
+        <>
+            <div className="navbar">
+                    <div className="navbar-left">
+                        <img className="logo_image" src={logo} width="80px" alt="Logo" />
+                        <h1 className="nav-heading">CONNECT JAMIA</h1>
+                    </div>
+                    <div className="navbar-right">
+                    </div>
+            </div>
+            <div>
+
             <section>
                 {/* s<img src={blob} alt="header" /> */}
                 {/* <div className='logincontent'>
@@ -91,7 +103,7 @@ const Login2 = () => {
                         <div className="imgBx"><img style={{ objectFit: 'cover' }} src={network} alt="illustration" /></div>
                         <div className="formBx">
                             <form action="" onsubmit="return false;">
-                                <h1>CONNECT JAMIA</h1>
+                                {/* <h1>CONNECT JAMIA</h1> */}
                                 <h2>Sign In</h2>
                                 <p className={err===null?'show-error deactivated' : 'show-error activated'}>Username or password invalid</p>
                                 <input type="text" name="username" placeholder="Username" onChange={handleChange} />
@@ -107,7 +119,7 @@ const Login2 = () => {
                     <div className="user signupBx">
                         <div className="formBx">
                             <form action="" onsubmit="return false;">
-                                <h1>CONNECT JAMIA</h1>
+                                {/* <h1>CONNECT JAMIA</h1> */}
                                 <h2>Create an account</h2>
                                 <p className={err===null?'show-error deactivated' : 'show-error activated'}>{err}</p>
                                 <input type="text" name="name" placeholder="Name" onChange={handleChange}/>
@@ -121,11 +133,12 @@ const Login2 = () => {
                                 </p>
                             </form>
                         </div>
-                        <div className="imgBx"><img src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img2.jpg" alt="" /></div>
+                        <div className="imgBx"><img src={register_img} alt="" /></div>
                     </div>
                 </div>
             </section>
         </div>
+        </>
     )
 }
 
