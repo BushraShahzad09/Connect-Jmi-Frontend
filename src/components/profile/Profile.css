@@ -24,11 +24,11 @@
     height: 100px;
     align-items: center;
     width: 100%;
+    position:relative;
 
 }
 .profile-icon{
     border-radius: 50%;
-   
 }
 .profile-name{
     font-size: 20px;
@@ -57,6 +57,12 @@
     font-style: bold;
     color: lightblue;
     padding: 5px;
+    cursor: pointer;
+    transition: all 0.5s linear;
 }
+.profile-edit:hover{
+    color: rgb(92, 92, 231);
+}
+
 
 

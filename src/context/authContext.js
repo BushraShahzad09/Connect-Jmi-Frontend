@@ -37,12 +37,19 @@ export const AuthContextProvider = ({ children }) => {
     setCurrentUser(res.data);
   }
 
+  const editProfile = async (inputs) => {
+    const res = await axios.post("http://localhost:8800/api/auth/editprofile", inputs, {
+      withCredentials: true,
+    })
+    console.log(res.data);
+  }
+
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(currentUser));
   }, [currentUser]);
 
   return (
-    <AuthContext.Provider value={{ currentUser, login , register, otpVerification, resendOTP }}>
+    <AuthContext.Provider value={{ currentUser, login , register, otpVerification, resendOTP, editProfile }}>
       {children}
     </AuthContext.Provider>
   );

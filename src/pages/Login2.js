@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import './login2.css'
 import network from '../images/network.jpg'
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../src/context/authContext";
-import { Alert } from '@mui/material';
 
 
 const Login2 = () => {
