@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import logo from "../../images/icon.jpg"
 import { AuthContext } from "../../context/authContext";
 import "./Profile.css"
@@ -18,7 +18,7 @@ const Profile = () => {
             <p className="bio">Bio</p>
             <div className="profile-post">Posts Number</div>
             <div className="profile-comments">Comments Number</div>
-            <a className="profile-edit">Edit Profile</a>
+            <a href="/editprofile" className="profile-edit">Edit Profile</a>
         </div>
     )
 }

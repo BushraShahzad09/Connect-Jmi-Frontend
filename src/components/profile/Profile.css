@@ -62,12 +62,19 @@
   
   .profile-comments {
     border-bottom: 1px solid lightgray;
-  }
-  
-  .profile-edit {
+}
+.profile-edit{
     font-weight: bold;
-    color: #add8e6;
+    font-style: bold;
+    color: lightblue;
+    padding: 5px;
     padding-top: 20px;
+    cursor: pointer;
     align-items: center;
     justify-content: center;
-  }
+    transition: all 0.5s linear;
+}
+.profile-edit:hover{
+    color: rgb(92, 92, 231);
+}
+
