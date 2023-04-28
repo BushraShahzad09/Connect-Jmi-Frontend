@@ -6,6 +6,7 @@ import axios from 'axios'
 import { makeRequest } from "../../axios";
 import moment from 'moment'
 import {useMutation,  useQueryClient} from 'react-query'
+import { Box, Stack, Avatar } from "@mui/material";
 
 const Comments = ({postId}) =>{
   const [desc, setDesc]=useState("")
@@ -38,6 +39,10 @@ const Comments = ({postId}) =>{
       setDesc("")
     }
   }
+  const getName = (value) => {
+
+    return `${value.split(" ")[0][0]}`;
+  }
 
   return (
     <div className="comments">
@@ -49,10 +54,21 @@ const Comments = ({postId}) =>{
       {isLoading ?  "Loading" : data.map((comment) => (
         <div className="comment">
           <div className="details">
-            <span>{comment.name}</span>
+          <Box >
+            <Stack spacing={2}>
+              <Avatar className="avatar"
+                sx={{ bgcolor: "lightblue", color: "black", width:33,height:33 }}
+                children={getName(`${currentUser.name}`)}
+              />
+            </Stack>
+
+          </Box>
+            <span className="comment-user">{comment.name}</span>
             <span className="date-comment">{moment(comment.createdat).fromNow()}</span>
-          </div>
+          </div >
+          <div className="comment-data">
             <p>{comment.desc}</p>
+          </div>
         </div>
       ))}
     </div>

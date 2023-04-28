@@ -26,7 +26,8 @@ input {
   color: #f8fae4;
 }
 
-.share-btn {
+.share-btn2 {
+  font-size: 18px;
   background-color: #fff;
   border: 1px solid #fff;
   border-radius: 4px;
@@ -37,7 +38,7 @@ input {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-.share-btn:hover {
+.share-btn2:hover {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 

@@ -75,7 +75,7 @@ const Share = () => {
         <hr />
         <div className="bottom">
           <div className="right">
-            <button className="share-btn" onClick={handleClick} >
+            <button className="share-btn2" onClick={handleClick} >
               Share
             </button>
           </div>
