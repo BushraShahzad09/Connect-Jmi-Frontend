@@ -98,8 +98,8 @@ const Otp = () => {
 
     return (
         <div>
-            <section>
-                <div class="container">
+            <section id="section">
+                <div class="containerOTP">
                     <div class="user otpBx">
                         <div class="formBx">
 

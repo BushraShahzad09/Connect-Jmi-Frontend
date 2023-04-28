@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
-import './OTP.css';
+import './otp.css';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../src/context/authContext";
 const Otp = () => {
@@ -75,7 +75,7 @@ const Otp = () => {
     return (
         <div>
             <section>
-                <div class="container">
+                <div class="containerOTP">
                     <div class="user otpBx">
                         <div class="formBx">
 
