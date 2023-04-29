@@ -39,7 +39,7 @@ const Post = ({ post }) => {
           <span className="date">{moment(post.createdat).fromNow()}</span>
         </div>
         <div className="content">
-          <p className="post-data">{post.desc}</p>
+          <p>{post.desc}</p>
         </div>
         <div className="info">
           <button id="comments" className={commentOpen ? "item commentActive" : "item"} onClick={handleComment}>
