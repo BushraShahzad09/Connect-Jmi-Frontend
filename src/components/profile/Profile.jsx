@@ -26,10 +26,12 @@ const Profile = () => {
             </div>
             
             <h1 className="profile-name">{currentUser.name}</h1>
-            <p className="bio">Bio</p>
-            <div className="profile-post">{error ? "Something went wrong!" : (isLoading? "loading" : data[0].pno )}
+
+            <p className="bio">Bio:  {error ? "Something went wrong!" : (isLoading? "loading" : data[0].bio )}</p>
+
+            <div className="profile-post">Total No of Posts: {error ? "Something went wrong!" : (isLoading? "loading" : data[0].pno )}
             </div>
-            <div className="profile-comments">{error ? "Something went wrong!" : (isLoading? "loading" : data[0].cno )}</div>
+            <div className="profile-comments">Total No of Comments: {error ? "Something went wrong!" : (isLoading? "loading" : data[0].cno )}</div>
             <a href="/editprofile" className="profile-edit">Edit Profile</a>
         </div>
     )

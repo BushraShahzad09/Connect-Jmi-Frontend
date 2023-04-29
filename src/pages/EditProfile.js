@@ -4,6 +4,7 @@ import { AuthContext } from "../context/authContext";
 import { useNavigate } from 'react-router-dom';
 import './EditProfile.css';
 import axios from 'axios';
+import { Box, Stack, Avatar } from "@mui/material";
 
 export default function EditProfile() {
 
@@ -19,6 +20,7 @@ export default function EditProfile() {
         // setInputs(res.data[0])
         if(res.data.length !== 0){
             setInputs(res.data[0])
+            setInputs(prev => ({ ...prev,  currentuser: currentUser.username }))
         } else {
             setInputs({
                 username:currentUser.username,
@@ -29,7 +31,8 @@ export default function EditProfile() {
                 location: '',
                 phone: '',
                 birthday: '',
-                bio: ''
+                bio: '',
+                currentuser: currentUser.username
             })
         }
     }
@@ -43,20 +46,31 @@ export default function EditProfile() {
       const handleChange = (e) => {
         setInputs(prev => ({ ...prev, [e.target.name]: e.target.value }))
       }
-
       const handleEdit = async(e) => {
         e.preventDefault()
-        setInputs(prev => ({ ...prev, currentuser: currentUser.username}))
+        setInputs(prev => ({ ...prev}))
         try {
             await editProfile(inputs);
+            
             navigate("/home");
+            
           } catch (err) {
             setErr(err.response.data)
             console.log(err);
           }
       }
+     
+    //   useEffect(() => getData());
+      useEffect(() => {
+        getData()
+      },[]);
+         
 
-      useEffect(() => getData(), []);
+      const getName = (value) => {
+
+        return `${value.split(" ")[0][0]}`;
+      }
+     
 
   return (
     <div className='backimg'>
@@ -68,15 +82,20 @@ export default function EditProfile() {
             {/* <!-- Profile picture card--> */}
             <div class="card mb-4 mb-xl-0">
                 <div class="card-header">Profile Picture</div>
-                <div class="card-body text-center">
-                    {/* <!-- Profile picture image--> */}
-                    <img class="img-account-profile rounded-circle mb-2" src="https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg" alt="" />
-                    {/* <!-- Profile picture help block--> */}
-                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 3 MB</div>
-                    {/* <!-- Profile picture upload button--> */}
-                    <button class="btn btn-primary" type="button">+ Upload new image</button>
+                <div class="card-body ">
+                <div className="d-flex justify-content-center">
+                     <Box >
+            <Stack spacing={2}>
+              <Avatar className="avatar"
+                sx={{  width: 80, height: 80 ,bgcolor: "lightblue", color: "black" }}
+                children={getName(`${inputs.name}`)}
+              />
+            </Stack>
+
+          </Box>
+          </div>
                     <div class="mb-3 text-left">
-                        <label class="bio-heading" for="inputUsername">Bio</label>
+                        <label class="bio-heading" for="inputUsername">Bio:</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Tell us about yourself." value={inputs.bio} name='bio' onChange={handleChange}></textarea>
                     </div>
                 </div>
@@ -90,8 +109,8 @@ export default function EditProfile() {
                     <form>
                         {/* <!-- Form Group (username)--> */}
                         <div class="mb-3">
-                            <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
-                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your Username" value={inputs.username} name='username' onChange={handleChange}/>
+                            <label class="small mb-1" for="inputUsername">Username</label>
+                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your Username" value={inputs.username} name='username'  onChange={handleChange} disabled readonly/>
                         </div>
                         {/* <!-- Form Row--> */}
                         <div class="row gx-3 mb-3">
@@ -122,7 +141,7 @@ export default function EditProfile() {
                         {/* <!-- Form Group (email address)--> */}
                         <div class="mb-3">
                             <label class="small mb-1" for="inputEmailAddress">Email address</label>
-                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your Email" value={inputs.email} name='email' onChange={handleChange}/>
+                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your Email" value={inputs.email} name='email' onChange={handleChange} disabled readonly/>
                         </div>
                         {/* <!-- Form Row--> */}
                         <div class="row gx-3 mb-3">

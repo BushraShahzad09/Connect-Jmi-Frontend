@@ -14,6 +14,7 @@ const Share = () => {
   // }
   const { currentUser } = useContext(AuthContext);
   let userid = currentUser.id;
+  let username = currentUser.username;
 
   const queryClient = useQueryClient();
 
@@ -32,7 +33,7 @@ const Share = () => {
     e.preventDefault();
     if (desc === "") alert("Input field cannot be empty");
     else {
-      mutation.mutate({ desc, userid });
+      mutation.mutate({ desc, userid,username });
       setDesc("");
     }
   };
@@ -53,7 +54,7 @@ const Share = () => {
         alert("Input field cannot be empty");
         return
       }
-      mutation.mutate({ desc, userid });
+      mutation.mutate({ desc, userid,username });
       setDesc("");
     }
   }

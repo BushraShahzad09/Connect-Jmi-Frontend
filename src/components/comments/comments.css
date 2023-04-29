@@ -16,6 +16,9 @@
 .details{
   padding-top: 10px;
 }
+.comment-details{
+  /* padding: 20px; */
+}
 .commentinput {
   border-radius: 10px;
   background-color: #fff;
@@ -35,6 +38,26 @@
   /* border: solid red 1px; */
 }
 
+.commment-name {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+.commment-highlight {
+  padding: 1px;
+  margin-bottom: 1rem;
+  background-color: #f8f9fa;
+  margin-top: 1px;
+  border-radius: 5px;
+
+}
+.commment-timestamp {
+  display: flex;
+  flex-direction: row;
+  margin-top: -13px;
+  margin-left: 40px;
+  font-size: 10px;
+}
 .commentbutton {
   font-size: 15px;
   float: right;
@@ -66,4 +89,6 @@
 
 .comment-data{
   margin-top: 5px;
+  font-size: 13px;  
+  padding: 7px;
 }
