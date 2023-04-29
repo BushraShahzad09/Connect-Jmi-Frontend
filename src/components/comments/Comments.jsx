@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import "./comments.css";
 import { AuthContext } from "../../context/authContext";
 import {useQuery} from 'react-query'
@@ -15,12 +15,20 @@ const Comments = ({postId}) =>{
 
   const queryClient=useQueryClient()
 
-  const {isLoading, error, data}=useQuery(['comments'], ()=>
-  makeRequest.get("/comments?postId="+postId).then((res)=>{
-    return res.data
-  })
-  )
+  // const {isLoading, error, data}=useQuery(['comments'], ()=>
+  // makeRequest.get("/comments?postId="+postId).then((res)=>{
+  //   return res.data
+  // })
+  // )
+  let isLoading=0;
+  const [data, setData]=useState([])
 
+  useEffect(() => {
+    fetch("http://localhost:8800/api/comments?postId="+postId).then(res => res.json()).then(data => {
+        console.log(data)
+        setData(data)
+    });
+}, [data])
 
   const mutation=useMutation((newComment)=>{
     return makeRequest.post("/comments", newComment)
@@ -49,15 +57,16 @@ const Comments = ({postId}) =>{
         <input className="commentinput" type="text" placeholder="Write a comment!" onChange={e=>setDesc(e.target.value)} value={desc} />
         <button className="commentbutton" onClick={handleClick}>Send</button>
       </div> }
-      {data.length===0 && 'No Comments'}
+     
       {isLoading ?  "Loading" : data.map((comment) => (
-        <div className="comment">
+        <>
+        {/* <div className="comment">
           <div className="details">
           <Box >
             <Stack spacing={2}>
               <Avatar className="avatar"
                 sx={{ bgcolor: "lightblue", color: "black", width: 33, height: 33 }}
-                children={getName(`${currentUser.name}`)}
+                children={getName(`${comment.name}`)}
               />
             </Stack>
 
@@ -66,8 +75,38 @@ const Comments = ({postId}) =>{
             <span className="date-comment">{moment(comment.createdat).fromNow()}</span>
           </div>
             <p className="comment-data">{comment.desc}</p>
+        </div> */}
+        <div className="comment">
+        
+          <div className="details">
+          <a href={`/view/${comment.username}`}>
+          <Box >
+            <Stack spacing={2}>
+              <Avatar className="avatar"
+             sx={{  width: 30, height: 30 ,bgcolor: "lightblue", color: "black" }}
+                children={getName(`${comment.name}`)}
+              />
+            </Stack>
+
+          </Box>
+          </a>
+          <a href={`/view/${comment.username}`}>
+          <span className="commment-name">{comment.name}</span>
+          </a>
         </div>
+        <div className="commment-timestamp">
+          <span className="date">{moment(comment.createdat).fromNow()}</span>
+        </div>
+        <div className="commment-highlight container">
+        <div className="comment-data">
+          <p>{comment.desc}</p>
+        </div>
+        </div>
+        </div>
+        
+        </>
       ))}
+       {data != null && data.length===0 && 'No Comments'}
     </div>
   );
 };

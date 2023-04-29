@@ -2,14 +2,16 @@ import React, { useState, useContext } from 'react'
 import './login2.css'
 import network from '../images/network.jpg'
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from "../../src/context/authContext";
+import { AuthContext} from "../../src/context/authContext";
 import { Alert } from '@mui/material';
 import logo from "../images/logo_wo (2).png";
 import "../components/header/Header.css";
 import register_img from "../images/resigter.jpg";
 
 const Login2 = () => {
-
+    const { currentUser } = useContext(AuthContext);
+    // const navigate = useNavigate();
+   
     const [inputs, setInputs] = useState({
         username: "",
         password: "",
@@ -30,7 +32,9 @@ const Login2 = () => {
       }
     
       const navigate = useNavigate()
-    
+      if(currentUser != null){
+        navigate('/home');
+    }
       const { login, register } = useContext(AuthContext);
     
       const handleLogin = async (e) => {

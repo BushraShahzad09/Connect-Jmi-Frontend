@@ -6,6 +6,7 @@ import Login2 from './pages/Login2';
 import LandingPage from './pages/LandingPage'
 import Otp from './pages/OTP';
 import EditProfile from './pages/EditProfile';
+import ViewProfile from './pages/ViewProfile';
 
 function App() {
   const queryClient=new QueryClient()
@@ -20,6 +21,7 @@ function App() {
           <Route path='/otp' element={<Otp />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/editprofile" element={<EditProfile/>}></Route>
+          <Route path="/view/:username" element={<ViewProfile/>}></Route>
           <Route path="/" element={<LandingPage />}></Route>
           {/* <Route path="/register" element={<Register/>}></Route> */}
           {/* <Route path="/login" element={<Login />}></Route> */}

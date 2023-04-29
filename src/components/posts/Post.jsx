@@ -24,6 +24,7 @@ const Post = ({ post }) => {
     <div className="post">
       <div className="userInfo">
         <div className="details">
+          <a href={`/view/${post.username}`}>
           <Box >
             <Stack spacing={2}>
               <Avatar className="avatar"
@@ -33,13 +34,18 @@ const Post = ({ post }) => {
             </Stack>
 
           </Box>
+          </a>
+          <a href={`/view/${post.username}`}>
           <span className="name">{post.name}</span>
+          </a>
         </div>
         <div className="timestamp">
           <span className="date">{moment(post.createdat).fromNow()}</span>
         </div>
+        <div className="highlight container">
         <div className="post_content">
           <p>{post.desc}</p>
+        </div>
         </div>
         <div className="info">
           <button id="comments" className={commentOpen ? "item commentActive" : "item"} onClick={handleComment}>
