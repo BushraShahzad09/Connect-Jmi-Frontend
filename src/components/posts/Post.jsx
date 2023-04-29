@@ -38,7 +38,7 @@ const Post = ({ post }) => {
         <div className="timestamp">
           <span className="date">{moment(post.createdat).fromNow()}</span>
         </div>
-        <div className="content">
+        <div className="post_content">
           <p>{post.desc}</p>
         </div>
         <div className="info">
