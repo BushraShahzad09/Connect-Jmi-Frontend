@@ -16,7 +16,6 @@ const Posts = () => {
 
   useEffect(() => {
     fetch("http://localhost:8800/api/posts").then(res => res.json()).then(data => {
-        console.log(data);
         setData(data);
     });
 }, [])

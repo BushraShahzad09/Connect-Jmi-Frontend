@@ -45,7 +45,7 @@ const Comments = ({postId}) =>{
         <input className="commentinput" type="text" placeholder="Write a comment!" onChange={e=>setDesc(e.target.value)} value={desc} />
         <button className="commentbutton" onClick={handleClick}>Send</button>
       </div> }
-      
+      {data.length===0 && 'No Comments'}
       {isLoading ?  "Loading" : data.map((comment) => (
         <div className="comment">
           <div className="details">

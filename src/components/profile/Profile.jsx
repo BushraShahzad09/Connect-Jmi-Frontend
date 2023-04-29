@@ -1,11 +1,22 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useEffect,useState } from "react";
 import logo from "../../images/icon.jpg"
 import { AuthContext } from "../../context/authContext";
 import "./Profile.css"
+import { makeRequest } from "../../axios";
+import moment from 'moment'
+import {useMutation,  useQueryClient, useQuery} from 'react-query'
 
 const Profile = () => {
     const { currentUser } = useContext(AuthContext);
+    let userid = currentUser.id;
+
+    const {isLoading, error, data}=useQuery(['profile-post'], ()=>
+    makeRequest.get("/users/postno/"+userid).then((res)=>{
+        return res.data
+    })
+    )
+    
     return(
         <div className="profile-container">
             <div className="profile-background">
@@ -16,8 +27,9 @@ const Profile = () => {
             
             <h1 className="profile-name">{currentUser.name}</h1>
             <p className="bio">Bio</p>
-            <div className="profile-post">Posts Number</div>
-            <div className="profile-comments">Comments Number</div>
+            <div className="profile-post">{error ? "Something went wrong!" : (isLoading? "loading" : data[0].pno )}
+            </div>
+            <div className="profile-comments">{error ? "Something went wrong!" : (isLoading? "loading" : data[0].cno )}</div>
             <a href="/editprofile" className="profile-edit">Edit Profile</a>
         </div>
     )
