@@ -74,6 +74,19 @@
     justify-content: center;
     transition: all 0.5s linear;
 }
+
+.user-validation{
+  border-top: 1px solid lightgray;
+  width: 100%;
+  font-weight: normal;
+  color: lightblue;
+  padding: 5px;
+  margin-top: -25px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s linear;
+}
 .profile-edit:hover{
     color: rgb(92, 92, 231);
 }

@@ -33,6 +33,8 @@ const Profile = () => {
             </div>
             <div className="profile-comments">Total No of Comments: {error ? "Something went wrong!" : (isLoading? "loading" : data[0].cno )}</div>
             <a href="/editprofile" className="profile-edit">Edit Profile</a>
+            <hr />
+            <a href="https://forms.gle/64NtFdzLG3YLytxN7" className="user-validation" target="_blank">Become a verified member!</a>
         </div>
     )
 }
